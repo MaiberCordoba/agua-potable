@@ -3,12 +3,12 @@ import React, { useState } from "react";
 
 const Form =()=>{
 
-    let TurbidezI=localStorage.setItem('turbidez',1)
-    let NitratosI=localStorage.setItem('nitratos',10)
-    let FluororusI=localStorage.setItem('fluoruros',1.5)
-    let AcernicoI=localStorage.setItem('arsenico',0.01)
-    let MercurioI=localStorage.setItem('mercurio',0.006)
-    let PlomoI = localStorage.setItem('plomo',0.01)
+    localStorage.setItem('turbidez',1)
+    localStorage.setItem('nitratos',10)
+    localStorage.setItem('fluoruros',1.5)
+    localStorage.setItem('arsenico',0.01)
+    localStorage.setItem('mercurio',0.006)
+    localStorage.setItem('plomo',0.01)
 
 
     const [Elemento,setelemento]=useState('')
@@ -37,89 +37,86 @@ const Form =()=>{
             alert ('el mercurio esta mal')
         }
     }
+
+     
     
     
     return(
-        <nav >
-            <div className="col-2 m-5 p-5 justify content-center shadow border"> 
-                <form  className='form control col-1 m- justify content-center' onSubmit={valores}>
-                  
+        <nav>
+        <div className="container d-flex flex-column align-items-center mt-5">
+        <div className="col-md-6 m-5 p-5 shadow border rounded">
+            <form className="form-group" onSubmit={valores}>
+                <div className="mb-3">
+                    <label htmlFor="turbidez" className="form-label">Turbidez</label>      
+                    <input type="number" className="form-control" name="turbidez" onChange={(e)=>setturbidez(e.target.value)} placeholder="Ingrese un valor"/>   
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="nitratos" className="form-label">Nitratos</label>
+                    <input type="number" className="form-control" name="Nitratos" onChange={(e)=>setnitratos(e.target.value)} placeholder="Ingrese un valor"/> 
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="fluororus" className="form-label">Fluororos</label>
+                    <input type="number" className="form-control" name="fluoruros" onChange={(e)=>setfluoruros(e.target.value)} placeholder="Ingrese un valor"/> 
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="arsenico" className="form-label">Arsenico</label>
+                    <input type="number" className="form-control" name="Arcenico" onChange={(e)=>setarcenico(e.target.value)} placeholder="Ingrese un valor"/> 
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="mercurio" className="form-label">Mercurio</label>
+                    <input type="number" className="form-control" name="mercurio" onChange={(e)=>setmercurio(e.target.value)} placeholder="Ingrese un valor"/> 
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="plomo" className="form-label">Plomo</label>
+                    <input type="number" className="form-control" name="plomo" onChange={(e)=>setplomo(e.target.value)} placeholder="Ingrese un valor"/> 
+                </div>
+                <button className="btn btn-primary w-100" type="submit">Enviar</button> 
+                <button className="btn btn-danger w-100" type="submit">aplicar filtro</button> 
+                     
+            </form>
+        </div>
+        </div>
+       
+        <div className="col-md-6 m-5">
+            <table className="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Valor</th>
+                        <th>Valor luego filtro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Turbidez</td>
+                        <td>{Turbidez}</td>
+                    </tr>
+                    <tr>
+                        <td>Nitratos</td>
+                        <td>{Nitratos}</td>
+                    </tr>
+                    <tr>
+                        <td>Fluororus</td>
+                        <td>{Fluororus}</td>
+                    </tr>
+                    <tr>
+                        <td>Arsenico</td>
+                        <td>{Arcenico}</td>
+                    </tr>
+                    <tr>
+                        <td>Mercurio</td>
+                        <td>{Mercurio}</td>
+                    </tr>
+                    <tr>
+                        <td>Plomo</td>
+                        <td>{Plomo}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </nav>
 
-                    <label htmlFor="turbidez">Turbidez</label>      
-                    <input type="number" name="turbidez" onChange={(e)=>setturbidez(e.target.value)} placeholder="ingrese un valor"/>   
-
-                    <label htmlFor="nitratos">Nitratos</label>
-                    <input type="number" name="Nitratos" onChange={(e)=>setnitratos(e.target.value)}  placeholder="ingrese un valor"/> 
-
-                    <label htmlFor="fluororus">Flouroros</label>
-                    <input type="number" name="fluoruros" onChange={(e)=>setfluoruros(e.target.value)}  placeholder="ingrese un valor"/> 
-
-                    <label htmlFor="arsenico">Arcenico</label>
-                    <input type="number" name="Arcenico" onChange={(e)=>setarcenico(e.target.value)}  placeholder="ingrese un valor"/> 
-                    
-                    <label htmlFor="mercurio">Mercurio</label>
-                    <input type="number" name="mercurio" onChange={(e)=>setmercurio(e.target.value)}  placeholder="ingrese un valor"/> 
-
-                    <label htmlFor="Plomo">Plomo</label>
-                    <input type="number" name="plomo" onChange={(e)=>setplomo(e.target.value)}  placeholder="ingrese un valor"/> 
-
-                <button className="m-5 btn btn-primary" type="submit">Enviar</button>      
-                </form>
-            </div>
-           
-            <div>
-                <table>
-                    <td>
-                        
-                        <tr>
-                            Turbidez
-                        </tr>
-
-                        <tr>
-                            Nitratos    
-                        </tr>
-
-                        <tr>
-                            Fluororus
-                        </tr>
-
-                        <tr>
-                            Arsenico
-                        </tr>
-                        
-                        <tr>
-                            Mercurio
-                        </tr>
-
-                        <tr>
-                            plomo
-                        </tr>
-                    </td>
-                    <tb>
-                        <td>
-                            <tr>
-                                {Turbidez}
-                            </tr>
-                            <tr>
-                                {Nitratos}
-                            </tr>
-                            <tr>
-                                {Fluororus}
-                            </tr>
-                            <tr>
-                                {Arcenico}
-                            </tr>
-                            <tr>
-                                {Mercurio}
-                            </tr>
-                            <tr>
-                                {Plomo}
-                            </tr>
-                        </td>
-                    </tb>
-                </table>
-            </div>
-        </nav>
     )
 }
+  
 export default Form;
